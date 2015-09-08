@@ -6,20 +6,20 @@
          point="org.eclipse.ui.commands">
       <command
             name="Clean All Command"
-            id="cleanbutton.commands.cleanAllCommand">
+            id="quickclean.commands.refreshAndCleanAllCommand">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="cleanbutton.commands.cleanAllCommand"
-            class="cleanbutton.handlers.CleanAllHandler">
+            commandId="quickclean.commands.refreshAndCleanAllCommand"
+            class="quickclean.handlers.RefreshAndCleanAllHandler">
       </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="cleanbutton.commands.cleanAllCommand"
+            commandId="quickclean.commands.refreshAndCleanAllCommand"
             contextId="org.eclipse.ui.contexts.window"
             sequence="M3+M4+c"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
@@ -30,15 +30,30 @@
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
-               id="cleanbutton.toolbars.cleanAllToolbar">
+               id="quickclean.toolbars.maintoolbar">
             <command
-                  commandId="cleanbutton.commands.cleanAllCommand"
+                  commandId="quickclean.commands.refreshAndCleanAllCommand"
                   icon="icons/edit-clear.png"
-                  tooltip="Clean and rebuild workspace"
-                  id="cleanbutton.commands.cleanAllCommand">
+                  tooltip="Refresh, clean and rebuild workspace"
+                  id="quickclean.commands.refreshAndCleanAllCommand">
             </command>
          </toolbar>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabs">
+      <tab
+            class="quickclean.launchconfiguration.LaunchConfigurationTab"
+            group="org.eclipse.ant.ui.launchConfigurationTabGroup.ant"
+            id="quickclean.launchconfigurationtab"
+            name="quickclean.launchconfigurationtab">
+      </tab>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="quickclean.EarlyStartup">
+      </startup>
    </extension>
 
 </plugin>
