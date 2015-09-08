@@ -7,8 +7,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
@@ -18,14 +20,17 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public void createControl(Composite parent) {
-		checkbox = createCheckButton(parent, "Enable refresh and clean after build");
+		Composite composite = new Composite(parent, SWT.NONE);
+		composite.setLayout(new GridLayout(1, false));
+		checkbox = createCheckButton(composite, "Enable refresh and clean after build");
 		checkbox.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				updateLaunchConfigurationDialog();
 			}
 		});
-		setControl(checkbox);
+		setControl(composite);
+
 	}
 
 	@Override
