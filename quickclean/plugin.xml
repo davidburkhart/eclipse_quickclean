@@ -47,6 +47,9 @@
             group="org.eclipse.ant.ui.launchConfigurationTabGroup.ant"
             id="quickclean.launchconfigurationtab"
             name="quickclean.launchconfigurationtab">
+         <placement
+               after="org.eclipse.debug.ui.refreshTab">
+         </placement>
       </tab>
    </extension>
    <extension

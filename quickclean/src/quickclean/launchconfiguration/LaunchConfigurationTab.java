@@ -10,9 +10,12 @@ import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+
+import quickclean.QuickCleanImages;
 
 public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 
@@ -31,10 +34,6 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 		});
 		setControl(composite);
 
-	}
-
-	@Override
-	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 	}
 
 	@Override
@@ -60,4 +59,14 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	public String getName() {
 		return "Refresh and clean";
 	}
+
+	@Override
+	public Image getImage() {
+		return QuickCleanImages.image("icons/edit-clear.png");
+	}
+
+	@Override
+	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+	}
+
 }
