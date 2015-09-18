@@ -1,5 +1,6 @@
 package quickclean;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.IDebugEventSetListener;
@@ -19,7 +20,7 @@ public class RefreshAndCleanWorkspace implements IDebugEventSetListener {
 				ILaunchConfiguration launchConfiguration = process.getLaunch().getLaunchConfiguration();
 
 				if (isRefreshAndCleanEnabled(launchConfiguration)) {
-					new ScheduleRefreshAndClean().scheduleJob();
+					new ScheduleRefreshAndClean(ResourcesPlugin.getWorkspace()).scheduleJob();
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 package quickclean;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
@@ -13,9 +14,30 @@ import org.eclipse.ui.progress.IProgressConstants2;
 
 public class ScheduleRefreshAndClean {
 
+	@FunctionalInterface
+	interface BuildAction {
+		void run(int kind, IProgressMonitor progressMonitor) throws CoreException;
+	}
+
+	private final BuildAction buildAction;
+	private final IResource resource;
+	private final String name;
+
+	public ScheduleRefreshAndClean(IWorkspace workspace) {
+		buildAction = workspace::build;
+		resource = workspace.getRoot();
+		name = "workspace";
+	}
+
+	public ScheduleRefreshAndClean(IProject project) {
+		buildAction = project::build;
+		resource = project;
+		name = project.getName();
+	}
+
 	public void scheduleJob() {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		WorkspaceJob cleanJob = new WorkspaceJob("Clean and build workspace") {
+		WorkspaceJob cleanJob = new WorkspaceJob("Clean and build " + name) {
 			@Override
 			public boolean belongsTo(Object family) {
 				return ResourcesPlugin.FAMILY_MANUAL_BUILD.equals(family);
@@ -23,7 +45,7 @@ public class ScheduleRefreshAndClean {
 
 			@Override
 			public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
-				return cleanAll(workspace, monitor);
+				return clean(monitor);
 			}
 		};
 		cleanJob.setRule(workspace.getRuleFactory().buildRule());
@@ -32,22 +54,23 @@ public class ScheduleRefreshAndClean {
 		cleanJob.schedule();
 	}
 
-	private IStatus cleanAll(IWorkspace workspace, IProgressMonitor monitor) throws CoreException {
+	private IStatus clean(IProgressMonitor monitor) throws CoreException {
 
-		monitor.beginTask("Refreshing and cleaning all projects", 3);
+		monitor.beginTask("Refreshing and cleaning " + name, 3);
 
 		monitor.subTask("Refreshing...");
-		workspace.getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		resource.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 		monitor.worked(1);
 
 		monitor.subTask("Cleaning...");
-		workspace.build(IncrementalProjectBuilder.CLEAN_BUILD, monitor);
+		buildAction.run(IncrementalProjectBuilder.CLEAN_BUILD, monitor);
 		monitor.worked(1);
 
 		monitor.subTask("Building...");
-		workspace.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, monitor);
+		buildAction.run(IncrementalProjectBuilder.INCREMENTAL_BUILD, monitor);
 		monitor.worked(1);
 
 		return Status.OK_STATUS;
 	}
+
 }
