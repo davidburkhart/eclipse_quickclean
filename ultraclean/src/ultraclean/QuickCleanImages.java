@@ -1,4 +1,4 @@
-package quickclean;
+package ultraclean;
 
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;

@@ -1,7 +1,7 @@
-package quickclean.launchconfiguration;
+package ultraclean.launchconfiguration;
 
-import static quickclean.RefreshAndCleanWorkspace.QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED;
-import static quickclean.RefreshAndCleanWorkspace.QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED_DEFAULT;
+import static ultraclean.RefreshAndCleanWorkspace.QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED;
+import static ultraclean.RefreshAndCleanWorkspace.QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED_DEFAULT;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -15,7 +15,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
-import quickclean.QuickCleanImages;
+import ultraclean.QuickCleanImages;
 
 public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 

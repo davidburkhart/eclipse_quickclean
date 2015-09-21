@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Clean All Toolbar Button
-Bundle-SymbolicName: quickclean;singleton:=true
+Bundle-SymbolicName: ultraclean;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: quickclean.QuickCleanPlugin
+Bundle-Activator: ultraclean.QuickCleanPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.debug.ui,
  org.eclipse.ui,

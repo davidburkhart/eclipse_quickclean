@@ -1,4 +1,4 @@
-package quickclean;
+package ultraclean;
 
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

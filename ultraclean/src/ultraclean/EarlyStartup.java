@@ -1,4 +1,4 @@
-package quickclean;
+package ultraclean;
 
 import org.eclipse.ui.IStartup;
 

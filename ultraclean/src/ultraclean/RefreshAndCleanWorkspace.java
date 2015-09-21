@@ -1,4 +1,4 @@
-package quickclean;
+package ultraclean;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -9,7 +9,7 @@ import org.eclipse.debug.core.model.IProcess;
 
 public class RefreshAndCleanWorkspace implements IDebugEventSetListener {
 
-	public static final String QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED = "quickclean.REFRESH_AND_CLEAN_ENABLED";
+	public static final String QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED = "ultraclean.REFRESH_AND_CLEAN_ENABLED";
 	public static final boolean QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED_DEFAULT = false;
 
 	@Override

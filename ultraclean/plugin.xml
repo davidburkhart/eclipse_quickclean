@@ -6,25 +6,25 @@
          point="org.eclipse.ui.commands">
       <command
             name="Clean All Command"
-            id="quickclean.commands.refreshAndCleanAllCommand">
+            id="ultraclean.commands.refreshAndCleanAllCommand">
       </command>
       <command
-            id="quickclean.commands.refreshAndCleanProjectCommand"
+            id="ultraclean.commands.refreshAndCleanProjectCommand"
             name="Clean Project Command">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="quickclean.commands.refreshAndCleanAllCommand"
-            class="quickclean.handlers.RefreshAndCleanAllHandler">
+            commandId="ultraclean.commands.refreshAndCleanAllCommand"
+            class="ultraclean.handlers.RefreshAndCleanAllHandler">
       </handler>
       <handler
-            class="quickclean.handlers.RefreshAndCleanProjectHandler"
-            commandId="quickclean.commands.refreshAndCleanProjectCommand">
+            class="ultraclean.handlers.RefreshAndCleanProjectHandler"
+            commandId="ultraclean.commands.refreshAndCleanProjectCommand">
          <activeWhen>
             <reference
-                  definitionId="quickclean.projectSelected">
+                  definitionId="ultraclean.projectSelected">
             </reference>
          </activeWhen>
       </handler>
@@ -32,7 +32,7 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="quickclean.commands.refreshAndCleanAllCommand"
+            commandId="ultraclean.commands.refreshAndCleanAllCommand"
             contextId="org.eclipse.ui.contexts.window"
             sequence="M3+M4+c"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
@@ -43,12 +43,12 @@
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
-               id="quickclean.toolbars.maintoolbar">
+               id="ultraclean.toolbars.maintoolbar">
             <command
-                  commandId="quickclean.commands.refreshAndCleanAllCommand"
+                  commandId="ultraclean.commands.refreshAndCleanAllCommand"
                   icon="icons/edit-clear.png"
                   tooltip="Refresh, clean and rebuild workspace"
-                  id="quickclean.commands.refreshAndCleanAllCommand">
+                  id="ultraclean.commands.refreshAndCleanAllCommand">
             </command>
          </toolbar>
       </menuContribution>
@@ -56,14 +56,14 @@
             allPopups="false"
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <command
-               commandId="quickclean.commands.refreshAndCleanProjectCommand"
+               commandId="ultraclean.commands.refreshAndCleanProjectCommand"
                icon="icons/edit-clear.png"
-               id="quickclean.commands.refreshAndCleanProjectCommand"
+               id="ultraclean.commands.refreshAndCleanProjectCommand"
                label="Refresh and clean project">
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="quickclean.projectSelected">
+                     definitionId="ultraclean.projectSelected">
                </reference>
             </visibleWhen>
          </command>
@@ -72,10 +72,10 @@
    <extension
          point="org.eclipse.debug.ui.launchConfigurationTabs">
       <tab
-            class="quickclean.launchconfiguration.LaunchConfigurationTab"
+            class="ultraclean.launchconfiguration.LaunchConfigurationTab"
             group="org.eclipse.ant.ui.launchConfigurationTabGroup.ant"
-            id="quickclean.launchconfigurationtab"
-            name="quickclean.launchconfigurationtab">
+            id="ultraclean.launchconfigurationtab"
+            name="ultraclean.launchconfigurationtab">
          <placement
                after="org.eclipse.debug.ui.refreshTab">
          </placement>
@@ -84,13 +84,13 @@
    <extension
          point="org.eclipse.ui.startup">
       <startup
-            class="quickclean.EarlyStartup">
+            class="ultraclean.EarlyStartup">
       </startup>
    </extension>
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="quickclean.projectSelected">
+            id="ultraclean.projectSelected">
          <with
                variable="selection">
             <count
