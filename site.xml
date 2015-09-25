@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/ultraclean.feature_1.0.0.201509221924.jar" id="ultraclean.feature" version="1.0.0.201509221924"/>
+   <feature url="features/ultraclean.feature_1.0.0.201509252017.jar" id="ultraclean.feature" version="1.0.0.201509252017">
+      <category name="ultraclean.category"/>
+   </feature>
+   <category-def name="ultraclean.category" label="Ultraclean">
+      <description>
+         Shiny clean workspace in one click
+      </description>
+   </category-def>
 </site>
