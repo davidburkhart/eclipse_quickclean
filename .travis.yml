@@ -4,4 +4,4 @@ jdk:
   - oraclejdk8
 
 install: mvn -f ultraclean.build/pom.xml -DskipTests=true clean install
-test: mvn -f ultraclean.build/pom.xml test
+script: mvn -f ultraclean.build/pom.xml test
