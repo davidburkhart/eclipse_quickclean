@@ -1,5 +1,6 @@
 package ultraclean;
 
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugEvent;
@@ -20,15 +21,16 @@ public class RefreshAndCleanWorkspace implements IDebugEventSetListener {
 				ILaunchConfiguration launchConfiguration = process.getLaunch().getLaunchConfiguration();
 
 				if (isRefreshAndCleanEnabled(launchConfiguration)) {
-					new ScheduleRefreshAndClean(ResourcesPlugin.getWorkspace()).scheduleJob();
+					IWorkspace workspace = ResourcesPlugin.getWorkspace();
+					new ScheduleRefreshAndClean(workspace).scheduleJob();
 				}
 			}
 		}
 	}
 
-	private boolean isRefreshAndCleanEnabled(ILaunchConfiguration launchConfiguration) {
+	private boolean isRefreshAndCleanEnabled(ILaunchConfiguration config) {
 		try {
-			return launchConfiguration.getAttribute(QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED,
+			return config != null && config.getAttribute(QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED,
 					QUICKCLEAN_REFRESH_AND_CLEAN_ENABLED_DEFAULT);
 		} catch (CoreException e) {
 			return false;
